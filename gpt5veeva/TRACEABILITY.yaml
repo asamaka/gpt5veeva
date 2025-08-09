@@ -1,0 +1,53 @@
+requirements:
+  - id: REQ-001
+    title: Parse uploaded CV to RESUME_STRUCT
+    section: D1/D2, C1
+    tasks:
+      - apps/web: /api/parse endpoint
+      - services/parser: /ingest endpoint
+    code:
+      - apps/web/app/api/parse/route.ts
+      - services/parser/main.py
+    tests:
+      - packages/core/test/schemas.test.ts
+  - id: REQ-002
+    title: Gap analysis and questions generation
+    section: D1, D3, E, F
+    tasks:
+      - packages/llm: provider + mocks
+      - apps/web: /api/analyze, /api/questions
+    code:
+      - packages/llm/src/index.ts
+      - apps/web/app/api/analyze/route.ts
+      - apps/web/app/api/questions/route.ts
+    tests: []
+  - id: REQ-003
+    title: Apply answers and rewrite
+    section: D1, D3, F3
+    tasks:
+      - packages/llm: applyAnswersAndRewrite mock
+      - apps/web: /api/answers
+    code:
+      - packages/llm/src/index.ts
+      - apps/web/app/api/answers/route.ts
+    tests: []
+  - id: REQ-004
+    title: Render template and export PDF/DOCX
+    section: D1, H, L11-12
+    tasks:
+      - packages/templates: classic renderer
+      - apps/web: /api/render/pdf
+      - services/parser: /docx/export
+    code:
+      - packages/templates/src/classic.ts
+      - apps/web/app/api/render/pdf/route.ts
+      - services/parser/main.py
+    tests: []
+  - id: REQ-005
+    title: ATS validator (MVP)
+    section: I
+    tasks:
+      - packages/ats: validator
+    code:
+      - packages/ats/src/validator.ts
+    tests: []

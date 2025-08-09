@@ -1,0 +1,21 @@
+{
+  "name": "@veeva/templates",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "echo 'no lint yet'",
+    "test:snapshots": "vitest run"
+  },
+  "dependencies": {
+    "@veeva/core": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.3",
+    "vitest": "^1.6.0"
+  }
+}
